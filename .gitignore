@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# editor / tooling state
+.claude/
+.refact/
+.vscode/
+.idea/
+
+# node
+node_modules/
+npm-debug.log*
+
+# vercel
+.vercel
+
+# template vendor's own documentation — 18MB, not part of the site
+documentation/
+
+# archived material: removed pages, old homepages, original logos, backups.
+# Kept locally as an undo buffer; never deployed, never public.
+_archive/
+*.bak
+
+# macOS archive junk
+__MACOSX/
+._*

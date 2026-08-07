@@ -1,0 +1,25 @@
+/* TEAM */
+
+    Developer: StynerDev
+    Site: https://www.styner.dev/
+    Website: https://www.stynerdev.com/
+
+/* CLIENT */
+
+    Organization: Restorative Media
+    Type: Non-profit 501(c)(3)
+    Tagline: Decolonizing Narratives
+    Founder: Troy Williams
+
+/* SITE */
+
+    Copyright (c) 2026 Restorative Media. All rights reserved.
+    This website and its contents are the property of Restorative Media.
+    Unauthorized copying, distribution, or use is strictly prohibited.
+
+    Website developed by: StynerDev
+    Developer website: https://www.styner.dev/
+
+    Language: English
+    Doctype: HTML5
+    Standards: HTML5, CSS3, JavaScript

@@ -1,0 +1,207 @@
+/*!
+ * ============================================================================
+ *  Restorative Media — site overrides
+ *  https://www.restorativemedia.org/
+ *
+ *  Copyright (c) 2026 Restorative Media. All rights reserved.
+ *  Website developed by : StynerDev — https://www.styner.dev/
+ * ============================================================================
+ *
+ *  The template's logo slot is built for a wide 142x46 wordmark. Our mark is a
+ *  square badge, so the fixed-width container is collapsed to fit it — otherwise
+ *  50-90px of dead space sits between the logo and the navigation.
+ */
+
+/* square badge, sized to sit comfortably inside the 60-65px header.
+   !important is required: the template sets .logo-header img{width:auto;height:auto},
+   which outranks the HTML width/height attributes and renders the mark at full size. */
+.logo-header img {
+	width: 48px !important;
+	height: 48px !important;
+	max-width: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	object-fit: contain;
+	vertical-align: middle;
+}
+
+/* vertical rhythm: nav links carry 18px of padding, so the mark is centred in the
+   same band rather than sitting hard against the top of the bar.
+   NOTE: never set `display` on .logo-header itself — the template uses
+   `.header-nav .logo-header{display:none}` to hide the duplicate logo that lives
+   inside the mobile off-canvas menu. Overriding display makes BOTH logos appear.
+   Centre via the anchor instead. */
+.logo-header a {
+	align-items: center;
+	height: 100%;
+}
+
+.logo-header img {
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;
+}
+
+/* belt and braces: keep the off-canvas duplicate hidden on desktop */
+@media only screen and (min-width: 992px) {
+	.header-nav .logo-header,
+	.mo-nav .logo-header {
+		display: none !important;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+
+	.logo-header,
+	.is-fixed .logo-header,
+	.is-fixed.header-curve .logo-header,
+	.header-archia .logo-header {
+		width: auto !important;
+		max-width: none !important;
+		min-width: 0 !important;
+	}
+
+	.logo-header a {
+		display: flex !important;
+		align-items: center;
+		justify-content: flex-start;
+		height: 100%;
+		width: auto !important;
+		text-align: left !important;
+	}
+}
+
+/* mobile: keep the template's centred off-canvas logo, just constrain the mark */
+@media only screen and (max-width: 767px) {
+	.logo-header img {
+		width: 44px !important;
+		height: 44px !important;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Brand lockup: badge + stacked "RESTORATIVE / MEDIA" wordmark.
+   Hidden on mobile — the off-canvas header has no room, and the badge alone
+   carries the mark there. Both header states (transparent over the hero, and
+   rgba(0,0,0,.7) when sticky) are dark, so white reads correctly in both.
+   -------------------------------------------------------------------------- */
+
+.logo-header .brand-name {
+	display: none;
+}
+
+@media only screen and (min-width: 768px) {
+
+	/* Every property is restated because the template's `.logo-header span`
+	   (0,1,1) sets font-size:20px / letter-spacing:20px. Scoping under
+	   .logo-header gives 0,2,x so these win. */
+	.logo-header .brand-name {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-left: 13px;
+		font-weight: 700;
+		font-size: 16px !important;
+		line-height: 1.25;
+		letter-spacing: 1px !important;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	/* ------------------------------------------------------------------
+	   Backdrop-aware wordmark colour.
+
+	   The header is transparent, so its readable colour depends on what is
+	   behind it — and that differs per page:
+	     homepage  : hero slider, no overlay        -> luminance ~188  LIGHT
+	     all others: banner + .overlay-black-middle
+	                 (#000 @ 50% opacity)           -> luminance ~94   DARK
+	     scrolled  : .is-fixed .main-bar = #252525  -> DARK, every page
+
+	   Each <header> is tagged .hdr-on-light / .hdr-on-dark accordingly, and the
+	   sticky rules come last so they win once the bar gains its own background.
+	   ------------------------------------------------------------------ */
+
+	.logo-header .brand-name span {
+		font-size: 16px !important;
+		letter-spacing: 1px !important;
+		line-height: 1.25;
+	}
+
+	/* light backdrop -> dark ink */
+	.hdr-on-light .logo-header .brand-name span { color: #1a1a1a !important; }
+	.hdr-on-light .logo-header .brand-name span + span { color: #8B401D !important; }
+
+	/* dark backdrop -> light ink.
+	   The inner banners sit at ~94 luminance (mid-dark), where the full-strength
+	   #DC8156 manages only 2.26:1. Lightened along the same 19deg hue to #EEC0AB
+	   (3.94:1) — clearly visible and still reads as the brand warm tone. The
+	   full-strength orange is kept for the genuinely dark surfaces below. */
+	.hdr-on-dark .logo-header .brand-name span { color: #ffffff !important; }
+	.hdr-on-dark .logo-header .brand-name span + span { color: #EEC0AB !important; }
+
+	/* scrolled: the bar paints itself #252525 on every page, so always light */
+	.is-fixed .logo-header .brand-name span { color: #ffffff !important; }
+	.is-fixed .logo-header .brand-name span + span { color: #DC8156 !important; }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.logo-header .brand-name,
+	.logo-header .brand-name span {
+		font-size: 14px !important;
+		letter-spacing: 0.8px !important;
+	}
+	.logo-header .brand-name { margin-left: 9px; }
+}
+
+/* --------------------------------------------------------------------------
+   Footer lockup — same badge + stacked wordmark as the header.
+   Shown at every breakpoint here: the footer is a stacked column with room,
+   unlike the navbar. Footer background is #202020, so white reads correctly.
+   -------------------------------------------------------------------------- */
+
+.footer-logo {
+	width: auto !important;
+}
+
+.footer-logo a {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+.footer-logo img {
+	width: 48px !important;
+	height: 48px !important;
+	max-width: none !important;
+	margin: 0 !important;
+	object-fit: contain;
+}
+
+.footer-logo .brand-name {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 13px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 1.25;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.footer-logo .brand-name span {
+	color: #fff;
+}
+
+.footer-logo .brand-name span + span {
+	color: #DC8156;
+}
+
+@media only screen and (max-width: 767px) {
+	.footer-logo .brand-name {
+		font-size: 14px;
+		letter-spacing: 0.8px;
+		margin-left: 10px;
+	}
+}

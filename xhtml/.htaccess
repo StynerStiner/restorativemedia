@@ -1,0 +1,40 @@
+# Restorative Media — security headers (Apache)
+# Website developed by StynerDev — https://www.styner.dev/
+
+<IfModule mod_headers.c>
+    # Only same-origin assets may load. Blocks any injected third-party script,
+    # tracker, pixel or beacon before the browser will execute it.
+    Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; media-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+
+    # Don't leak the full URL to external sites
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Deny access to camera / mic / geolocation / FLoC-style topics
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+
+    # Standard hardening
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Clean URLs already work via directory index files.
+<IfModule mod_dir.c>
+    DirectoryIndex index.html
+</IfModule>
+
+# Keep archived / source material unreachable
+<FilesMatch "\.(bak|log|md|json|lock)$">
+    Require all denied
+</FilesMatch>
+
+# Long-cache immutable assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css                "access plus 1 year"
+    ExpiresByType application/javascript  "access plus 1 year"
+    ExpiresByType font/woff2              "access plus 1 year"
+    ExpiresByType image/png               "access plus 1 year"
+    ExpiresByType image/jpeg              "access plus 1 year"
+    ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>

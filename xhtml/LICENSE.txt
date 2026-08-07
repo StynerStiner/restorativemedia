@@ -1,0 +1,36 @@
+================================================================================
+  Restorative Media — Decolonizing Narratives
+  https://www.restorativemedia.org/
+================================================================================
+
+Copyright (c) 2026 Restorative Media
+All rights reserved.
+
+This website and its contents are the property of Restorative Media.
+Unauthorized copying, distribution, or use is strictly prohibited.
+
+--------------------------------------------------------------------------------
+  DEVELOPMENT
+--------------------------------------------------------------------------------
+
+Website developed by : StynerDev
+Developer website    : https://www.styner.dev/
+Website URL          : https://www.stynerdev.com/
+
+--------------------------------------------------------------------------------
+  THIRD-PARTY COMPONENTS
+--------------------------------------------------------------------------------
+
+This site bundles third-party libraries that remain the property of their
+respective owners and are used under their own licenses. Their license headers
+are retained in the vendor files and must not be removed:
+
+  - jQuery .......................... MIT License — jquery.org/license
+  - Bootstrap ....................... MIT License — getbootstrap.com
+  - Slider Revolution (ThemePunch) .. commercial license
+  - Font Awesome .................... SIL OFL 1.1 / MIT — fontawesome.com
+  - Owl Carousel .................... MIT License
+  - Themify Icons / Line Awesome .... see respective vendor directories
+
+The site design was built on a commercially licensed HTML template, purchased
+and substantially modified for Restorative Media by StynerDev.
