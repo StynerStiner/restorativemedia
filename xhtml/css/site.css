@@ -205,3 +205,37 @@
 		margin-left: 10px;
 	}
 }
+
+/* --------------------------------------------------------------------------
+   Hero slider
+
+   1. No white flash. The markup ships style="background:#ffffff" on the
+      wrapper while .rev_slider sits at display:none until the JS boots — so a
+      slow connection shows a white block. Backed with a dark tone instead, and
+      a min-height so the page doesn't jump when the slider takes over.
+
+   2. Responsive. sliderLayout was "fullscreen" (100vh) with a 150% Ken Burns
+      zoom: a 1920x898 (2.14:1) image cover-cropped into a 390x844 (0.46:1)
+      phone shows only a narrow centre strip. Now "auto" with a proper
+      gridheight ladder, so the image is actually visible on every screen.
+   -------------------------------------------------------------------------- */
+
+.main-slider,
+#welcome_wrapper,
+.main-slider .tp-banner-container {
+	background-color: #202020;
+}
+
+/* reserve the space the slider will occupy, so nothing jumps on load */
+#welcome_wrapper { min-height: 460px; }
+
+@media only screen and (min-width: 768px)  { #welcome_wrapper { min-height: 540px; } }
+@media only screen and (min-width: 1025px) { #welcome_wrapper { min-height: 640px; } }
+@media only screen and (min-width: 1241px) { #welcome_wrapper { min-height: 720px; } }
+
+/* keep the slide art anchored on its centre while it scales */
+.main-slider .tp-bgimg,
+.main-slider .rev-slidebg {
+	background-position: center center !important;
+	background-size: cover !important;
+}

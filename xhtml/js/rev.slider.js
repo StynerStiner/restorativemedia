@@ -21,7 +21,7 @@ function dz_rev_slider_1(){
 		dzrevapi = dzQuery("#welcome").show().revolution({
 			sliderType:"standard",
 			jsFileLocation:"/plugins/revolution/revolution/js/",
-			sliderLayout:"fullscreen",
+			sliderLayout:"auto",
 			dottedOverlay:"none",
 			delay:9000,
 			particles: {startSlide: "first", endSlide: "last", zIndex: "1",
@@ -89,7 +89,7 @@ function dz_rev_slider_1(){
 			responsiveLevels:[1240,1024,778,480],
 			visibilityLevels:[1240,1024,778,480],
 			gridwidth:[1240,1024,778,480],
-			gridheight:[868,768,960,720],
+			gridheight:[720,640,540,460],
 			lazyType:"single",
 			parallax: {
 				type:"scroll",
